@@ -1,9 +1,18 @@
 'use strict';
 
+const MAX_ENEMY = 7;
 const score = document.querySelector('.score');
 const start = document.querySelector('.start');
 const gameArea = document.querySelector('.game-area');
 const car = document.createElement('div');
+
+const audio = new Audio('audio.mp3');
+
+// const music = document.createElement('embed');
+// music.classList.add('visually-hidden');
+// music.src = 'audio.mp3';
+
+car.classList.add('car');
 
 const keys = {
     ArrowUp: false,
@@ -18,8 +27,6 @@ const setting = {
     speed: 3,
     traffic: 3
 };
-
-car.classList.add('car');
 
 function getQuantityElements(heightElement) {
     return document.documentElement.clientHeight / heightElement + 1;
@@ -71,9 +78,18 @@ function playGame() {
     }
 }
 
-function startGame() {
-    start.classList.add('hide');
+const getRandomEnemy = (max) => Math.floor((Math.random() * max) + 1);
 
+function startGame() {
+    audio.play();
+    setTimeout(() => {
+        audio.pause();
+    }, 3000);
+    // document.body.append(music);
+    start.classList.add('hide');
+    // setTimeout(() => {
+    //     music.remove();
+    // }, 3000);
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
@@ -88,7 +104,7 @@ function startGame() {
         enemy.y = -100 * setting.traffic * (i + 1);
         enemy.style.top = enemy.y + 'px';
         enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
-        enemy.style.backgroundImage = 'url("./image/enemy-3.png")';
+        enemy.style.backgroundImage = `url('./image/enemy${getRandomEnemy(MAX_ENEMY)}.png')`;
         gameArea.appendChild(enemy);
     }
 
@@ -100,13 +116,17 @@ function startGame() {
 }
 
 function startRun(e) {
-    e.preventDefault();
-    keys[e.key] = true;
+    if (keys.hasOwnProperty(e.key)) {
+        e.preventDefault();
+        keys[e.key] = true;
+    }
 }
 
 function stopRun(e) {
-    e.preventDefault();
-    keys[e.key] = false;
+    if (keys.hasOwnProperty(e.key)) {
+        e.preventDefault();
+        keys[e.key] = false;
+    }
 }
 
 start.addEventListener('click', startGame);
