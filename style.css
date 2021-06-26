@@ -41,19 +41,14 @@ table {
 	border-spacing: 0;
 }
 
-.visually-hidden {
-    position: absolute !important;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0 !important;
-    border: 0 !important;
-    height: 1px !important; 
-    width: 1px !important; 
-    overflow: hidden;
-}
-
 .hide {
     display: none;
+}
+
+.game {
+    display: flex;
+    height: calc(100vh - 96px);
+    padding-top: 96px;
 }
 
 .car, .enemy {
@@ -65,13 +60,11 @@ table {
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;
-    left: 125px;
-    bottom: 10px;
 }
 
 .game-area {
     width: 300px;
-    height: 100vh;
+    min-height: 80vh;
     margin: auto;
     background-color: #222;
     position: relative;
@@ -84,4 +77,48 @@ table {
     width: 10px;
     height: 50px;
     background-color: #fff;
+}
+
+.start {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    margin: 0;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 3px 8px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 3px;
+    background-color: #222;
+}
+
+.btn:disabled {
+    background-color: #eee;
+    color: #ccc;
+}
+
+.score {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    margin: 0;
+    padding: 65px 0 15px;
+    text-align: center;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }

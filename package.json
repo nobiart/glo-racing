@@ -1,0 +1,25 @@
+{
+  "name": "glo-racing",
+  "description": "Racing Game",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobiart/glo-racing.git"
+  },
+  "author": "nobiart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nobiart/glo-racing/issues"
+  },
+  "homepage": "https://github.com/nobiart/glo-racing#readme",
+  "devDependencies": {
+    "electron": "^13.1.4",
+    "electron-packager": "^15.2.0",
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  }
+}
